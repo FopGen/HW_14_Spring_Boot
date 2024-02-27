@@ -1,11 +1,12 @@
-package com.example.HW_14_Spring;
+package com.example.service.dto;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Component
-public class Note {
+public class NoteDto {
     private UUID id;
     private String title;
     private String content;
@@ -38,5 +39,18 @@ public class Note {
     @Override
     public String toString() {
         return "+++++ " + title + ", " + content + ", id= " + id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NoteDto noteDto = (NoteDto) o;
+        return Objects.equals(id, noteDto.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
